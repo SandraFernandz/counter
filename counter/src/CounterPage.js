@@ -5,5 +5,13 @@ export const CounterPage = ({ initialCount }) => {
   useEffect(() => {
     console.log(count);
   }, [count]);
-  return <div>hello</div>;
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+  return (
+    <div>
+      <h3>Count is {count}</h3>
+      <button onClick={handleClick}>Increase</button>
+    </div>
+  );
 };
