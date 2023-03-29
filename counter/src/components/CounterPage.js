@@ -44,7 +44,10 @@ export const CounterPage = ({ initialCount }) => {
     console.log(state.count);
   }, [state.count]);
   const handleIncrement = () => {
-    // setCount(count + 1);
+    dispatch({
+      type: INCREMENT_COUNT,
+    });
+    console.log(state);
   };
   const handleDecrement = () => {
     dispatch({
