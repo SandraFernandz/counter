@@ -74,7 +74,7 @@ export const CounterPage = ({ initialCount }) => {
       <button onClick={handleDecrement}>Decrease</button>
       <h4>Count is {state.count}</h4>
       <form onSubmit={handleSubmit}>
-        <label>Add a lot!</label>
+        <label>Add a lot</label>
         <br />
         <input
           type="number"
