@@ -1,14 +1,29 @@
 import { useReducer, useEffect } from 'react';
 
+const INCREMENT_COUNT = 'increment';
+const DECREMENT_COUNT = 'decrement';
+const SET_VALUE_TO_ADD = 'set-value-to-add';
+
 export const CounterPage = ({ initialCount }) => {
   // const [count, setCount] = useState(initialCount);
   // const [valueToAdd, setValueToAdd] = useState(0);
   const reducer = (state, action) => {
-    return {
-      ...state,
-      count: state.count + 1,
-    };
+    switch (action.type) {
+      case DECREMENT_COUNT:
+        return {
+          ...state,
+          count: state.count - 1,
+        };
+      case SET_VALUE_TO_ADD:
+        return {
+          ...state,
+          valueToAdd: action.payload,
+        };
+      default:
+        return state;
+    }
   };
+
   const [state, dispatch] = useReducer(reducer, {
     count: initialCount,
     valueToAdd: 0,
@@ -20,11 +35,17 @@ export const CounterPage = ({ initialCount }) => {
     // setCount(count + 1);
   };
   const handleDecrement = () => {
-    dispatch();
+    dispatch({
+      type: DECREMENT_COUNT,
+    });
+    console.log(state);
   };
   const handleChange = (event) => {
     const value = parseInt(event.target.value) || 0;
-    // setValueToAdd(value);
+    dispatch({
+      type: SET_VALUE_TO_ADD,
+      payload: value,
+    });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
