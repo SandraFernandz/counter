@@ -1,2 +1,2 @@
 # counter
-A basic counter project to with useReducer
+A basic counter project with Redux
